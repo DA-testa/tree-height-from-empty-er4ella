@@ -18,7 +18,7 @@ def compute_height(n, parents):
         else:
             for child in place[p]:
                 height = max(height,max_height(child))
-                return height + 1
+            return height + 1
     return max_height(root)
 
 
@@ -45,22 +45,9 @@ def main():
     else:
         print("F or I: ") 
         return
-    print(compute_height(n,parents))                   
-    
-    
-    
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
-    pass
-
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
-    pass
+    print(compute_height(n,parents))    
 
 sys.setrecursionlimit(10**7) 
 threading.stack_size(2**27)  
 threading.Thread(target=main).start()
 main()
-# print(numpy.array([1,2,3]))
