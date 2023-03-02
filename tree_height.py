@@ -43,7 +43,7 @@ def main():
             print("Kļūda")
             return
     else:
-        print("F or I: ") 
+        print("F or Ip: ") 
         return
     print(compute_height(n,parents))    
 
