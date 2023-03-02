@@ -9,12 +9,15 @@ def compute_height(n, parents):
     place = [[] for _ in range(n)]
     root = None
     for i in range(n):
-        if parents[i] == -1: root = i
-        else: place[parents[i]].append(i)
+        if parents[i] == -1: 
+            root = i
+        else: 
+            place[parents[i]].append(i)
 
     def max_height(p):
         height = 1
-        if not place[p]: return height
+        if not place[p]: 
+            return height
         else:
             for child in place[p]:
                 height = max(height,max_height(child))
@@ -43,9 +46,9 @@ def main():
             print("Kļūda")
             return
     else:
-        print("F or Ip: ") 
+        print("F or Ip: ")
         return
-    print(compute_height(n,parents))    
+    print(compute_height(n,parents))
 
 sys.setrecursionlimit(10**7) 
 threading.stack_size(2**27)  
