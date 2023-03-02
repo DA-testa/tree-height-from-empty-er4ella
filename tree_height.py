@@ -6,28 +6,61 @@ import numpy
 
 
 def compute_height(n, parents):
-    # Write this function
-    max_height = 0
-    # Your code here
-    return max_height
+    place = [[] for _ in range(n)]
+    root = None
+    for i in range(n):
+        if parents[i] == -1: root = i
+        else: place[parents[i]].append(i)
+
+    def max_height(p):
+        height = 1
+        if not place[p]: return height
+        else:
+            for child in place[p]:
+                height = max(height,max_height(child))
+                return height + 1
+    return max_height(root)
 
 
 def main():
-    # implement input form keyboard and from files
+    text=input("F or I: ")
+    if "I" in text:
+        n=int(input())
+        parents=list(map(int, input().split()))
+    elif "F" in text:
+        name=input()
+        path='./test/'
+        file = path+name
+        if "a" not in name:
+            try:
+                with open(file) as f:
+                    n=int(f.readline())
+                    parents=list(map(int,f.readline().split()))
+            except Exception as e:
+                print("Kļūda", str(e))
+                return
+        else:
+            print("Kļūda")
+            return
+    else:
+        print("F or I: ") 
+        return
+    print(compute_height(n,parents))                   
     
-    # let user input file name to use, don't allow file names with letter a
-    # account for github input inprecision
+    
     
     # input number of elements
     # input values in one variable, separate with space, split these values in an array
     # call the function and output it's result
     pass
 
-# In Python, the default limit on recursion depth is rather low,
-# so raise it here for this problem. Note that to take advantage
-# of bigger stack, we have to launch the computation in a new thread.
-sys.setrecursionlimit(10**7)  # max depth of recursion
-threading.stack_size(2**27)   # new thread will get stack of such size
+    # input number of elements
+    # input values in one variable, separate with space, split these values in an array
+    # call the function and output it's result
+    pass
+
+sys.setrecursionlimit(10**7) 
+threading.stack_size(2**27)  
 threading.Thread(target=main).start()
 main()
 # print(numpy.array([1,2,3]))
